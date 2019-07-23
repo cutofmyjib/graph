@@ -25,24 +25,30 @@ int main(int argc, char** argv) {
     if (!file) {
         cout << fileName << " could not be opened.\n";
         return 0;
-    } 
+    }
     
-    char firstChar = file.get();
+    char firstChar = file.peek();
     int firstCharInt = static_cast<int>(firstChar);
-    //TODO -- first char X == 88, x == 120, 0 == 48
-    cout << (firstCharInt == 48 ? "weighted graph" : "unweighted graph" ) << endl;
+    
+    //TODO -- first char X == 88, x == 120, 0 == 48?
+    bool isWeightedGraph = firstCharInt == 48 ? true : false;
 
     string line;
-    getline(file, line, '\n');
 
-    int matrixSize = (line.length() / 2) - 1; //comma + letters/2 - 1
-    cout << line << " length: " << matrixSize << endl;
+    // int matrixSize = 0;
+    // if (isWeightedGraph) {
+    //     matrixSize = (line.length() / 2);
+    // } else {
+    //     matrixSize = (line.length() / 2) - 1; //comma + letters/2 - 1
+    // }
+    // cout << matrixSize << endl;
     
     //create graph with size of matrixSize
-
     while(getline(file, line, '\n'))
-    {
-        for (int i = 2; i < line.length(); i++) 
+    {   
+        cout << (isWeightedGraph ? "is weighted" : "not weighted") << endl;
+        int startPos = isWeightedGraph ? 0 : 1;
+        for (int i = startPos; i < line.length(); i++) 
         {
             if (line[i] != ',') {
                 cout << line[i] << endl;
