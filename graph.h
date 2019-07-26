@@ -5,10 +5,21 @@ Purpose: This is the graph header file.
 ***********************************************************/
 
 #include <iostream>     /* cout, endl */
+#include <vector>
+
+using namespace std;
 
 //this is a directive that prevents .h files from being included more than once
 #ifndef GRAPH_H
 #define GRAPH_H
 
+class Graph
+{  
+public:
+    vector< vector<int> > adjMatrix; //2D array (matrix)
+    Graph(int SIZE);
+    ~Graph();
+    void showMatrix();
+};
 
 #endif //GRAPH_H

@@ -8,7 +8,7 @@ Purpose: This is the main header file.
 #define MAIN_H
 
 #include <iostream>     /* cout, endl */
-#include <stdlib.h>     /* srand, rand */
+#include <iomanip>
 #include <fstream> 
 
 using namespace std;

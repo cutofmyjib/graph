@@ -5,6 +5,7 @@ Purpose: This is the main cpp file.
 ***********************************************************/
 
 #include "main.h"
+#include "graph.h"
 
 int main(int argc, char** argv) {
 
@@ -32,31 +33,43 @@ int main(int argc, char** argv) {
     
     //TODO -- first char X == 88, x == 120, 0 == 48?
     bool isWeightedGraph = firstCharInt == 48 ? true : false;
-
+    int matrixSize = 0;
     string line;
 
-    // int matrixSize = 0;
-    // if (isWeightedGraph) {
-    //     matrixSize = (line.length() / 2);
-    // } else {
-    //     matrixSize = (line.length() / 2) - 1; //comma + letters/2 - 1
-    // }
-    // cout << matrixSize << endl;
+    if (isWeightedGraph) {
+        matrixSize = (line.length() / 2);
+    } else {
+        getline(file,line, '\n'); //truncate first line
+        matrixSize = (line.length() / 2) - 1; //comma + letters/2 - 1
+    }
     
     //create graph with size of matrixSize
-    while(getline(file, line, '\n'))
+    Graph myGraph = Graph(matrixSize);
+
+    //fill myGraph with values
+    int startPos = isWeightedGraph ? 0 : 1;
+    while(getline(file, line))
     {   
-        cout << (isWeightedGraph ? "is weighted" : "not weighted") << endl;
-        int startPos = isWeightedGraph ? 0 : 1;
-        for (int i = startPos; i < line.length(); i++) 
-        {
+        
+        vector<int> row;
+        for (int i = startPos; i < line.length(); i++) {
             if (line[i] != ',') {
-                cout << line[i] << endl;
+                int num;
+                if (line[i] == '0')
+                    num = 0;
+                else if (line[i] == '1')
+                    num = 1;
+                else
+                    num = -1;
+                // cout << "ch: " << line[i] << " int: " << num << endl;
+                // Create a vector to represent a row, and add it to the adjList.
+                row.push_back(num); //convert to int
             }
+
         }
-        cout <<  "---end line---" << endl;
+        myGraph.adjMatrix.push_back(row);
+            
     }
-
     file.close();
-
+    myGraph.showMatrix();
 }
