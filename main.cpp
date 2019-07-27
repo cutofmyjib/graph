@@ -10,15 +10,15 @@ Purpose: This is the main cpp file.
 
 int main(int argc, char** argv) {
 
-    bool canCreateMatrix = isValidFile(argc, argv);
+    bool can_create_matrix = IsValidFile(argc, argv);
     string filename = argv[1];
-    if (!canCreateMatrix) {
+    if (!can_create_matrix) {
         cout << filename << " could not be opened.\n";
     }
 
     //create graph with size of matrixSize
-    Graph myGraph = Graph(getMatrixSize(filename));
+    Graph mygraph = Graph(GetMatrixSize(filename));
 
-    createMatrixFrom(filename, &myGraph);
-    myGraph.showMatrix();
+    CreateMatrixFrom(filename, &mygraph);
+    mygraph.ShowMatrix();
 }

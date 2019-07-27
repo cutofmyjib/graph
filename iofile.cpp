@@ -5,41 +5,41 @@ Purpose: This is the input output read file cpp.
 ***********************************************************/
 #include "iofile.h"
 
-bool isValidFile(int argc, char** argv) {
+bool IsValidFile(int argc, char** argv) {
     
-    int argCount = argc - 1; //1st argument doesn't count (executable file)
-    bool hasParam = argCount >= 1;
-    bool isValid = true;
+    int arg_count = argc - 1; //1st argument doesn't count (executable file)
+    bool has_param = arg_count >= 1;
+    bool is_valid = true;
     fstream file;
 
-    if (!hasParam) 
-        isValid = false;
+    if (!has_param) 
+        is_valid = false;
 
-    string fileName = argv[1];
-    file.open(fileName);
+    string filename = argv[1];
+    file.open(filename);
 
     if (!file) {
-        isValid = false;
+        is_valid = false;
     }
 
-    return isValid;
+    return is_valid;
 }
 
-int getMatrixSize(string filename) {
+int GetMatrixSize(string filename) {
     fstream file;
     file.open(filename);
 
-    bool isWeightedGraph = isGraphWeighted(filename);
-    int matrixSize = 0;
+    bool is_weighted_graph = isGraphWeighted(filename);
+    int matrix_size = 0;
     string line;
 
-    if (isWeightedGraph) {
-        matrixSize = (line.length() / 2);
+    if (is_weighted_graph) {
+        matrix_size = (line.length() / 2);
     } else {
-        matrixSize = (line.length() / 2) - 1; //comma + letters/2 - 1
+        matrix_size = (line.length() / 2) - 1; //comma + letters/2 - 1
     }
     
-    return matrixSize;
+    return matrix_size;
     file.close();
 }
 
@@ -47,30 +47,30 @@ bool isGraphWeighted(string filename) {
     fstream file;
     file.open(filename);
 
-    char firstChar = file.peek();
-    int firstCharInt = static_cast<int>(firstChar);
+    char first_char = file.peek();
+    int first_char_int = static_cast<int>(first_char);
     
     //files start with X or 0, integer X == 88, 0 == 48
-    bool isWeightedGraph = firstCharInt == 48 ? true : false;
+    bool is_weighted_graph = first_char_int == 48 ? true : false;
     
     file.close();
 
-    return isWeightedGraph;
+    return is_weighted_graph;
 }
 
-void createMatrixFrom(string filename, Graph *matrix) {
+void CreateMatrixFrom(string filename, Graph *matrix) {
     
     fstream file;
     file.open(filename);
 
-    bool isWeightedGraph = isGraphWeighted(filename);
-    int startPos;
+    bool is_weighted_graph = isGraphWeighted(filename);
+    int start_pos;
     string line;
 
-    if (isWeightedGraph) {
-        startPos = 0;
+    if (is_weighted_graph) {
+        start_pos = 0;
     } else {
-        startPos = 1;
+        start_pos = 1;
         getline(file,line, '\n'); //truncate first line
     }
 
@@ -78,7 +78,7 @@ void createMatrixFrom(string filename, Graph *matrix) {
     while(getline(file, line))
     {   
         vector<int> row;
-        for (int i = startPos; i < line.length(); i++) {
+        for (int i = start_pos; i < line.length(); i++) {
             if (line[i] != ',') {
                 int num;
                 if (line[i] == '0')
@@ -93,7 +93,7 @@ void createMatrixFrom(string filename, Graph *matrix) {
             }
 
         }
-        matrix->adjMatrix.push_back(row);
+        matrix->adj_matrix.push_back(row);
     }
     file.close();
 }

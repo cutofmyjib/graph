@@ -16,10 +16,10 @@ using namespace std;
 class Graph
 {  
 public:
-    vector< vector<int> > adjMatrix; //2D array (matrix)
+    vector< vector<int> > adj_matrix; //2D array (matrix)
     Graph(int SIZE);
     ~Graph();
-    void showMatrix();
+    void ShowMatrix();
 };
 
 #endif //GRAPH_H

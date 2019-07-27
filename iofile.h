@@ -14,9 +14,9 @@ Purpose: This is the input output read file header.
 
 using namespace std;
 
-bool isValidFile(int argc, char** argv);
-int getMatrixSize(string filename);
+bool IsValidFile(int argc, char** argv);
+int GetMatrixSize(string filename);
 bool isGraphWeighted(string filename);
-void createMatrixFrom(string filename, Graph *matrix); 
+void CreateMatrixFrom(string filename, Graph *matrix); 
 
 #endif /* IOFILE_H */

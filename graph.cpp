@@ -11,7 +11,7 @@ Graph::Graph(int SIZE)
 {
     //matrix of dimensions SIZE * SIZE, all elements = 0.
     for (int i = 0; i < SIZE; i++)
-        adjMatrix.resize(SIZE);
+        adj_matrix.resize(SIZE);
 }
 
 Graph::~Graph()
@@ -19,15 +19,15 @@ Graph::~Graph()
 
 }
 
-void Graph::showMatrix()
+void Graph::ShowMatrix()
 {
-    for (int i = 0; i < adjMatrix.size(); i++) {
-        for (int j = 0; j < adjMatrix[i].size(); j++) {
+    for (int i = 0; i < adj_matrix.size(); i++) {
+        for (int j = 0; j < adj_matrix[i].size(); j++) {
             bool newline = false;
-            if (j == adjMatrix[i].size()-1) 
+            if (j == adj_matrix[i].size()-1) 
                 newline = true;
 
-            cout << adjMatrix[i][j] << " " << (newline ? "\n" : "");
+            cout << adj_matrix[i][j] << " " << (newline ? "\n" : "");
         }
     }
 }
