@@ -32,6 +32,7 @@ int GetMatrixSize(string filename) {
     bool is_weighted_graph = isGraphWeighted(filename);
     int matrix_size = 0;
     string line;
+    getline(file,line, '\n');
 
     if (is_weighted_graph) {
         matrix_size = (line.length() / 2);
