@@ -11,9 +11,6 @@ bool isValidFile(int argc, char** argv) {
     bool hasParam = argCount >= 1;
     bool isValid = true;
     fstream file;
-    // string csvline;
-    // string data;
-    // string strId;
 
     if (!hasParam) 
         isValid = false;
@@ -53,8 +50,7 @@ bool isGraphWeighted(string filename) {
     char firstChar = file.peek();
     int firstCharInt = static_cast<int>(firstChar);
     
-    //files start with X or 0
-    //char to integer X == 88, 0 == 48, USE atoi TODO
+    //files start with X or 0, integer X == 88, 0 == 48
     bool isWeightedGraph = firstCharInt == 48 ? true : false;
     
     file.close();
@@ -77,7 +73,7 @@ void createMatrixFrom(string filename, Graph *matrix) {
         startPos = 1;
         getline(file,line, '\n'); //truncate first line
     }
-    
+
     //fill matrix with values
     while(getline(file, line))
     {   
