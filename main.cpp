@@ -16,8 +16,7 @@ int main(int argc, char** argv) {
         cout << filename << " could not be opened.\n";
     }
 
-    //create graph with size of matrixSize
-    Graph mygraph = Graph(GetMatrixSize(filename));
+    Graph mygraph = Graph();
 
     CreateMatrixFrom(filename, &mygraph);
     mygraph.ShowMatrix();

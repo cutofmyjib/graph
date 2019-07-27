@@ -7,11 +7,9 @@ Purpose: This is where all the graph functions are defined.
 #include "graph.h"
 
 //CONSTRUCTOR
-Graph::Graph(int SIZE)
+Graph::Graph()
 {
-    //matrix of dimensions SIZE * SIZE, all elements = 0.
-    for (int i = 0; i < SIZE; i++)
-        adj_matrix.resize(SIZE);
+
 }
 
 Graph::~Graph()

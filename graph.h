@@ -17,7 +17,7 @@ class Graph
 {  
 public:
     vector< vector<int> > adj_matrix; //2D array (matrix)
-    Graph(int SIZE);
+    Graph();
     ~Graph();
     void ShowMatrix();
 };

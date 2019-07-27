@@ -25,25 +25,6 @@ bool IsValidFile(int argc, char** argv) {
     return is_valid;
 }
 
-int GetMatrixSize(string filename) {
-    fstream file;
-    file.open(filename);
-
-    bool is_weighted_graph = isGraphWeighted(filename);
-    int matrix_size = 0;
-    string line;
-    getline(file,line, '\n');
-
-    if (is_weighted_graph) {
-        matrix_size = (line.length() / 2);
-    } else {
-        matrix_size = (line.length() / 2) - 1; //comma + letters/2 - 1
-    }
-    
-    return matrix_size;
-    file.close();
-}
-
 bool isGraphWeighted(string filename) {
     fstream file;
     file.open(filename);
