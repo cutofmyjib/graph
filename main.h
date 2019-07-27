@@ -8,7 +8,6 @@ Purpose: This is the main header file.
 #define MAIN_H
 
 #include <iostream>     /* cout, endl */
-#include <iomanip>
 #include <fstream> 
 
 using namespace std;

@@ -73,7 +73,7 @@ void CreateMatrixFrom(string filename, Graph *matrix) {
                 // Create a vector to represent a row, and add it to the adjList.
                 row.push_back(num); //convert to int
             }
-
+            
         }
         matrix->adj_matrix.push_back(row);
     }
