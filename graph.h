@@ -5,6 +5,7 @@ Purpose: This is the graph header file.
 ***********************************************************/
 
 #include <iostream>     /* cout, endl */
+#include <queue>
 #include <vector>
 
 using namespace std;
@@ -19,6 +20,7 @@ public:
     vector< vector<int> > adj_matrix; //2D array (matrix)
     Graph();
     ~Graph();
+    void BFS();
     void ShowMatrix();
 };
 

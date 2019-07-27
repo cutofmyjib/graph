@@ -20,4 +20,5 @@ int main(int argc, char** argv) {
 
     CreateMatrixFrom(filename, &mygraph);
     mygraph.ShowMatrix();
+    mygraph.BFS();
 }
