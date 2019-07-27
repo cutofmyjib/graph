@@ -16,9 +16,11 @@ int main(int argc, char** argv) {
         cout << filename << " could not be opened.\n";
     }
 
+    //create graph, create adj. matrix from input file
     Graph mygraph = Graph();
-
     CreateMatrixFrom(filename, &mygraph);
     mygraph.ShowMatrix();
-    mygraph.BFS();
+    
+    //traverse the graph Breadth First
+    mygraph.BFS(1);
 }

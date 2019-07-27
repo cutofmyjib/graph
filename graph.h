@@ -20,7 +20,7 @@ public:
     vector< vector<int> > adj_matrix; //2D array (matrix)
     Graph();
     ~Graph();
-    void BFS();
+    void BFS(int start_index);
     void ShowMatrix();
 };
 

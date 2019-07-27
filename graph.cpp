@@ -17,17 +17,20 @@ Graph::~Graph()
 
 }
 
-void Graph::BFS()
+void Graph::BFS(int start_index)
 {
     queue<int> myqueue;
     vector<bool> visited;
     int matrix_size = adj_matrix[0].size();
 
+    cout << "--- Starting Breadth First Search ---" << endl;
+    cout << "Index of starting vertex: " << start_index << endl;
+
     //mark all vertices as unvisited
     for (int i = 0; i < matrix_size; i++)
         visited.push_back(false);
 
-    int start_vertex = 0;
+    int start_vertex = start_index;
     myqueue.push(start_vertex);
     visited[start_vertex] = true;
 
@@ -35,7 +38,7 @@ void Graph::BFS()
         int vertex = myqueue.front();
         myqueue.pop();
         
-        cout << vertex << " <-vertex" << endl;
+        cout << "\t" << vertex << endl;
         
         // Loop through adj_matrix[vertex] to find neighbors
         for (int i = 0; i < adj_matrix[0].size(); i++) {
@@ -52,18 +55,24 @@ void Graph::BFS()
             }
         }
     }
-    cout << "BFS Done" << endl;
+    cout << "--- End of Breadth First Search ---" << endl;
 }
 
 void Graph::ShowMatrix()
 {
+    cout << "--------- Adjacency Matrix ---------" << endl;
     for (int i = 0; i < adj_matrix.size(); i++) {
         for (int j = 0; j < adj_matrix[i].size(); j++) {
             bool newline = false;
+            bool startline = false;
+
             if (j == adj_matrix[i].size()-1) 
                 newline = true;
+            if (j == 0)
+                startline = true;
 
-            cout << adj_matrix[i][j] << " " << (newline ? "\n" : "");
+            cout << (startline ? "\t" : "") << adj_matrix[i][j] << " " << (newline ? "\n" : "");
         }
     }
+    cout << "-------------------------------------" << endl;
 }
