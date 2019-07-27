@@ -21,10 +21,8 @@ Graph::~Graph()
 
 void Graph::showMatrix()
 {
-    for (int i = 0; i < adjMatrix.size(); i++) 
-    {
-        for (int j = 0; j < adjMatrix[i].size(); j++) 
-        {
+    for (int i = 0; i < adjMatrix.size(); i++) {
+        for (int j = 0; j < adjMatrix[i].size(); j++) {
             bool newline = false;
             if (j == adjMatrix[i].size()-1) 
                 newline = true;
