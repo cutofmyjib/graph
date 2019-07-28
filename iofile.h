@@ -10,7 +10,6 @@ Purpose: This is the input output read file header.
 
 #include <iostream>     /* cout, endl */
 #include <fstream> 
-// #include <iomanip>
 
 using namespace std;
 

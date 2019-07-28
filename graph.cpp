@@ -64,11 +64,6 @@ void Graph::DFSHelper(int index, vector<bool> *visited)
     (*visited)[index] = true;
 
     cout << "\t" << index << endl;
-    // for (int i = 0; i < visited->size(); i++) {
-    //     cout << (*visited)[i] << " " ;
-    // }
-    // cout <<endl;
-    // cout << "=============" << endl;
 
     // Loop through adj_matrix to find neighbors
     for (int i = 0; i < adj_matrix[index].size(); i++) {
