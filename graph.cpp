@@ -58,6 +58,51 @@ void Graph::BFS(int start_index)
     cout << "--- End of Breadth First Search ---" << endl;
 }
 
+void Graph::DFSHelper(int index, vector<bool> *visited)
+{
+
+    (*visited)[index] = true;
+
+    cout << "\t" << index << endl;
+    // for (int i = 0; i < visited->size(); i++) {
+    //     cout << (*visited)[i] << " " ;
+    // }
+    // cout <<endl;
+    // cout << "=============" << endl;
+
+    // Loop through adj_matrix to find neighbors
+    for (int i = 0; i < adj_matrix[index].size(); i++) {
+        int first_neighbor = i;
+        int edge = adj_matrix[index][i];
+        // cout<< edge << " <-edge" << endl;
+        if(edge == 1) {
+            //enqueue neighbor if it hasn't been visited
+            if (!(*visited)[first_neighbor]) {
+                DFSHelper(first_neighbor, visited);
+            } 
+        }
+    }
+
+}
+
+void Graph::DFS(int start_index)
+{
+    int matrix_size = adj_matrix.size();
+    vector<bool> *visited = new vector<bool>(matrix_size);
+
+    //mark all vertices as unvisited
+    for (int i = 0; i < matrix_size; i++)
+        (*visited)[i] = false;
+
+    cout << "--- Starting Depth First Search ---" << endl;
+    cout << "Index of starting vertex: " << start_index << endl;
+
+    DFSHelper(start_index, visited);
+
+    cout << "--- End of Depth First Search ---" << endl;
+}
+
+
 void Graph::ShowMatrix()
 {
     cout << "--------- Adjacency Matrix ---------" << endl;

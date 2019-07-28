@@ -22,5 +22,9 @@ int main(int argc, char** argv) {
     mygraph.ShowMatrix();
     
     //traverse the graph Breadth First
-    mygraph.BFS(1);
+    mygraph.BFS(0);
+    
+    //traverse the graph Depth First
+    mygraph.DFS(5);
+
 }
