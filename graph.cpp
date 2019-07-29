@@ -127,7 +127,6 @@ void Graph::DFS(int start_index)
     }
 
     vector<bool> *visited = new vector<bool>(matrix_size);
-    cout << "matrix size " << matrix_size << endl;
 
     //mark all vertices as unvisited
     for (int i = 0; i < matrix_size; i++)

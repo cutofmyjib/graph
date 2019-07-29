@@ -20,9 +20,11 @@ int main(int argc, char** argv) {
     Graph mygraph = Graph(filename);
     CreateMatrixFrom(filename, &mygraph);
     mygraph.ShowMatrix();
-    
+    cout << endl;
+
     //traverse the graph Breadth First
     mygraph.BFS(0);
+    cout << endl;
     
     //traverse the graph Depth First
     mygraph.DFS(5);
