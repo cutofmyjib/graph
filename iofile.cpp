@@ -25,55 +25,22 @@ bool IsValidFile(int argc, char** argv) {
     return is_valid;
 }
 
-bool isGraphWeighted(string filename) {
-    fstream file;
-    file.open(filename);
-
-    char first_char = file.peek();
-    int first_char_int = static_cast<int>(first_char);
-    
-    //files start with X or 0, integer X == 88, 0 == 48
-    bool is_weighted_graph = first_char_int == 48 ? true : false;
-    
-    file.close();
-
-    return is_weighted_graph;
-}
-
 void CreateMatrixFrom(string filename, Graph *matrix) {
     
     fstream file;
     file.open(filename);
 
-    bool is_weighted_graph = isGraphWeighted(filename);
-    int start_pos;
     string line;
-
-    if (is_weighted_graph) {
-        start_pos = 0;
-    } else {
-        start_pos = 1;
-        getline(file,line, '\n'); //truncate first line
-    }
 
     //fill matrix with values
     while(getline(file, line))
     {   
+        //create a vector to represent a row, and add it to the adjList.
         vector<int> row;
-        for (int i = start_pos; i < line.length(); i++) {
+        for (int i = 0; i < line.length(); i++) {
             if (line[i] != ',') {
-                int num;
-                if (line[i] == '0')
-                    num = 0;
-                else if (line[i] == '1')
-                    num = 1;
-                else
-                    num = -1;
-
-                // Create a vector to represent a row, and add it to the adjList.
-                row.push_back(num); //convert to int
-            }
-            
+                row.push_back(line[i]);
+            } 
         }
         matrix->adj_matrix.push_back(row);
     }

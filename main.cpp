@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     }
 
     //create graph, create adj. matrix from input file
-    Graph mygraph = Graph();
+    Graph mygraph = Graph(filename);
     CreateMatrixFrom(filename, &mygraph);
     mygraph.ShowMatrix();
     

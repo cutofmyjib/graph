@@ -4,6 +4,7 @@ Assignment: 07
 Purpose: This is the graph header file.
 ***********************************************************/
 
+#include <fstream> 
 #include <iostream>     /* cout, endl */
 #include <queue>
 #include <stack>
@@ -19,13 +20,15 @@ class Graph
 {  
 private:
     void DFSHelper(int index, vector <bool> *visited); 
-   
+    bool is_weighted;
 public:
     vector< vector<int> > adj_matrix; //2D array (matrix)
-    Graph();
+    Graph(string filename);
     ~Graph();
     void BFS(int start_index);
     void DFS(int start_index);
+    bool getGraphType();
+    bool isGraphWeighted(string filename);
     void ShowMatrix();
 };
 
