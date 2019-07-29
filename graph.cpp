@@ -73,10 +73,9 @@ void Graph::BFS(int start_index)
             int neighbor = i;
             int edge = adj_matrix[vertex][i];
             
-            if(edge == 49) {
+            if((edge >= 49) && (edge <= 57)) {
                 //enqueue neighbor if it hasn't been visited
                 if (!visited[neighbor]) {
-                    
                     myqueue.push(neighbor);
                     visited[neighbor] = true;
                 }
