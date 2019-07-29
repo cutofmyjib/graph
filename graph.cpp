@@ -47,7 +47,7 @@ void Graph::BFS(int start_index)
     int start_pos = 0;
     
     if (!is_weighted_graph) {
-        matrix_size = matrix_size - 1;
+        matrix_size -= 1;
         start_pos = 1;
     }
 
@@ -87,16 +87,25 @@ void Graph::BFS(int start_index)
 
 void Graph::DFSHelper(int index, vector<bool> *visited)
 {
-    (*visited)[index] = true;
+    bool is_weighted_graph = getGraphType();
+    int graph_index = index;
+    int matrix_row_size = adj_matrix[graph_index].size();
+    int start_pos = 0;
 
-    cout << "\t" << index << endl;
+    cout << "\t" << (is_weighted_graph ? graph_index : (graph_index-1)) << endl;
+    (*visited)[graph_index] = true;
+
+    if (!is_weighted_graph) {
+        start_pos = 1;
+    }
+
 
     // Loop through adj_matrix to find neighbors
-    for (int i = 0; i < adj_matrix[index].size(); i++) {
+    for (int i = start_pos; i < matrix_row_size; i++) {
         int first_neighbor = i;
-        int edge = adj_matrix[index][i];
-        // cout<< edge << " <-edge" << endl;
-        if(edge == 1) {
+        int edge = adj_matrix[graph_index][i];
+        
+        if((edge >= 49) && (edge <= 57)) {
             //enqueue neighbor if it hasn't been visited
             if (!(*visited)[first_neighbor]) {
                 DFSHelper(first_neighbor, visited);
@@ -108,8 +117,17 @@ void Graph::DFSHelper(int index, vector<bool> *visited)
 
 void Graph::DFS(int start_index)
 {
+    bool is_weighted_graph = getGraphType();
     int matrix_size = adj_matrix.size();
+    int start_vertex = start_index;
+    
+    if (!is_weighted_graph) {
+        matrix_size -= 1;
+        start_vertex += 1;
+    }
+
     vector<bool> *visited = new vector<bool>(matrix_size);
+    cout << "matrix size " << matrix_size << endl;
 
     //mark all vertices as unvisited
     for (int i = 0; i < matrix_size; i++)
@@ -118,7 +136,7 @@ void Graph::DFS(int start_index)
     cout << "--- Starting Depth First Search ---" << endl;
     cout << "Index of starting vertex: " << start_index << endl;
 
-    DFSHelper(start_index, visited);
+    DFSHelper(start_vertex, visited);
 
     cout << "--- End of Depth First Search ---" << endl;
 }
