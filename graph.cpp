@@ -42,7 +42,14 @@ void Graph::BFS(int start_index)
 {
     queue<int> myqueue;
     vector<bool> visited;
+    bool is_weighted_graph = getGraphType();
     int matrix_size = adj_matrix[0].size();
+    int start_pos = 0;
+    
+    if (!is_weighted_graph) {
+        matrix_size = matrix_size - 1;
+        start_pos = 1;
+    }
 
     cout << "--- Starting Breadth First Search ---" << endl;
     cout << "Index of starting vertex: " << start_index << endl;
@@ -51,7 +58,7 @@ void Graph::BFS(int start_index)
     for (int i = 0; i < matrix_size; i++)
         visited.push_back(false);
 
-    int start_vertex = start_index;
+    int start_vertex = (is_weighted_graph ? start_index : (start_index + 1));
     myqueue.push(start_vertex);
     visited[start_vertex] = true;
 
@@ -59,14 +66,14 @@ void Graph::BFS(int start_index)
         int vertex = myqueue.front();
         myqueue.pop();
         
-        cout << "\t" << vertex << endl;
+        cout << "\t" << (is_weighted_graph ? vertex : (vertex-1)) << endl;
         
         // Loop through adj_matrix[vertex] to find neighbors
-        for (int i = 0; i < adj_matrix[0].size(); i++) {
+        for (int i = start_pos; i < adj_matrix[0].size(); i++) {
             int neighbor = i;
             int edge = adj_matrix[vertex][i];
             
-            if(edge == 1) {
+            if(edge == 49) {
                 //enqueue neighbor if it hasn't been visited
                 if (!visited[neighbor]) {
                     
@@ -119,9 +126,7 @@ void Graph::DFS(int start_index)
 
 
 void Graph::ShowMatrix()
-{
-    bool is_weighted_graph = getGraphType();
-    
+{    
     cout << "--------- Adjacency Matrix ---------" << endl;
     for (int i = 0; i < adj_matrix.size(); i++) {
         for (int j = 0; j < adj_matrix[i].size(); j++) {
