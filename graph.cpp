@@ -37,6 +37,35 @@ bool Graph::IsGraphWeighted(string filename) {
     return is_weighted_graph;
 }
 
+int Graph::GetTotalVertices()
+{
+    bool is_weighted_graph = GetGraphType();
+
+    return ( is_weighted_graph ? adj_matrix.size() : adj_matrix.size()-1 ) ;
+}
+
+int Graph::GetTotalEdges()
+{
+    bool is_weighted_graph = GetGraphType();
+    int edges_count = 0;
+    int graph_row_pos = adj_matrix.size() - 1;
+    int start_pos = 0;
+
+    if (!is_weighted_graph)
+        start_pos = 1;
+
+    while (graph_row_pos >= 0) {
+        for (int i = start_pos; i < adj_matrix.size(); i++) {
+            int edge = adj_matrix[graph_row_pos][i];
+            
+            if((edge >= 49) && (edge <= 57)) {
+                edges_count += 1;
+            }
+        }
+        graph_row_pos -=1;
+    }
+    return edges_count;
+}
 
 void Graph::BFS(int start_index)
 {
@@ -139,7 +168,6 @@ void Graph::DFS(int start_index)
 
     cout << "--- End of Depth First Search ---" << endl;
 }
-
 
 void Graph::ShowMatrix()
 {    

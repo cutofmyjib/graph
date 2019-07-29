@@ -25,11 +25,13 @@ public:
     vector< vector<int> > adj_matrix; //2D array (matrix)
     Graph(string filename);
     ~Graph();
+    bool GetGraphType();
+    bool IsGraphWeighted(string filename);
+    int GetTotalVertices();
+    int GetTotalEdges();
     void BFS(int start_index);
     void DFS(int start_index);
     void ShowMatrix();
-    bool GetGraphType();
-    bool IsGraphWeighted(string filename);
 };
 
 #endif //GRAPH_H

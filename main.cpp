@@ -19,8 +19,12 @@ int main(int argc, char** argv) {
     //create graph, create adj. matrix from input file
     Graph mygraph = Graph(filename);
     CreateMatrixFrom(filename, &mygraph);
+    cout << "Number of vertices: " << mygraph.GetTotalVertices() << endl;
+    cout << "Number of edges: " << mygraph.GetTotalEdges() << endl;
+
     mygraph.ShowMatrix();
     cout << endl;
+
 
     //traverse the graph Breadth First
     mygraph.BFS(0);
