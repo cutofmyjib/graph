@@ -15,7 +15,7 @@ using namespace std;
 
 bool IsValidFile(int argc, char** argv);
 int GetMatrixSize(string filename);
-bool isGraphWeighted(string filename);
+bool IsGraphWeighted(string filename);
 void CreateMatrixFrom(string filename, Graph *matrix); 
 
 #endif /* IOFILE_H */

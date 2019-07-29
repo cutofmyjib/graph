@@ -27,9 +27,9 @@ public:
     ~Graph();
     void BFS(int start_index);
     void DFS(int start_index);
-    bool getGraphType();
-    bool isGraphWeighted(string filename);
     void ShowMatrix();
+    bool GetGraphType();
+    bool IsGraphWeighted(string filename);
 };
 
 #endif //GRAPH_H

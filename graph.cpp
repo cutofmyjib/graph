@@ -9,7 +9,7 @@ Purpose: This is where all the graph functions are defined.
 //CONSTRUCTOR
 Graph::Graph(string filename)
 {
-    is_weighted = isGraphWeighted(filename);
+    is_weighted = IsGraphWeighted(filename);
 }
 
 Graph::~Graph()
@@ -17,12 +17,12 @@ Graph::~Graph()
 
 }
 
-bool Graph::getGraphType()
+bool Graph::GetGraphType()
 {
     return is_weighted;
 }
 
-bool Graph::isGraphWeighted(string filename) {
+bool Graph::IsGraphWeighted(string filename) {
     fstream file;
     file.open(filename);
 
@@ -42,7 +42,7 @@ void Graph::BFS(int start_index)
 {
     queue<int> myqueue;
     vector<bool> visited;
-    bool is_weighted_graph = getGraphType();
+    bool is_weighted_graph = GetGraphType();
     int matrix_size = adj_matrix[0].size();
     int start_pos = 0;
     
@@ -87,7 +87,7 @@ void Graph::BFS(int start_index)
 
 void Graph::DFSHelper(int index, vector<bool> *visited)
 {
-    bool is_weighted_graph = getGraphType();
+    bool is_weighted_graph = GetGraphType();
     int graph_index = index;
     int matrix_row_size = adj_matrix[graph_index].size();
     int start_pos = 0;
@@ -117,7 +117,7 @@ void Graph::DFSHelper(int index, vector<bool> *visited)
 
 void Graph::DFS(int start_index)
 {
-    bool is_weighted_graph = getGraphType();
+    bool is_weighted_graph = GetGraphType();
     int matrix_size = adj_matrix.size();
     int start_vertex = start_index;
     
