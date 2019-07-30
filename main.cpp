@@ -26,8 +26,20 @@ int main(int argc, char** argv) {
     //traverse the graph Breadth First
     mygraph.BFS(0);
     cout << endl;
+
+    mygraph.BFS(2);
+    cout << endl;
+
+    mygraph.BFS(4);
+    cout << endl;
     
     //traverse the graph Depth First
+    mygraph.DFS(0);
+    cout << endl;
+
+    mygraph.DFS(3);
+    cout << endl;
+
     mygraph.DFS(5);
     cout << endl;
 
@@ -40,4 +52,5 @@ int main(int argc, char** argv) {
     cout << "Is the graph connected? " << (mygraph.IsConnected() ? "true" : "false") << endl;
     cout << endl;
 
+    return 0;
 }
