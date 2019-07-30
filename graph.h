@@ -26,6 +26,7 @@ public:
     Graph(string filename);
     ~Graph();
     bool GetGraphType();
+    bool IsConnected();
     bool IsGraphWeighted(string filename);
     int GetTotalVertices();
     int GetTotalEdges();

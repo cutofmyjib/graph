@@ -19,12 +19,9 @@ int main(int argc, char** argv) {
     //create graph, create adj. matrix from input file
     Graph mygraph = Graph(filename);
     CreateMatrixFrom(filename, &mygraph);
-    cout << "Number of vertices: " << mygraph.GetTotalVertices() << endl;
-    cout << "Number of edges: " << mygraph.GetTotalEdges() << endl;
 
     mygraph.ShowMatrix();
     cout << endl;
-
 
     //traverse the graph Breadth First
     mygraph.BFS(0);
@@ -32,5 +29,15 @@ int main(int argc, char** argv) {
     
     //traverse the graph Depth First
     mygraph.DFS(5);
+    cout << endl;
+
+    cout << "Number of vertices: " << mygraph.GetTotalVertices() << endl;
+    cout << endl;
+
+    cout << "Number of edges: " << mygraph.GetTotalEdges() << endl;
+    cout << endl;
+
+    cout << "Is the graph connected? " << (mygraph.IsConnected() ? "true" : "false") << endl;
+    cout << endl;
 
 }

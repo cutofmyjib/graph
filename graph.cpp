@@ -22,6 +22,54 @@ bool Graph::GetGraphType()
     return is_weighted;
 }
 
+bool Graph::IsConnected()
+{
+    //use BFS to count nodes
+    queue<int> myqueue;
+    vector<bool> visited;
+    bool is_weighted_graph = GetGraphType();
+    int matrix_size = adj_matrix[0].size();
+    int start_index = 0; //start at first vertex
+    int start_pos = 0;
+    int total_vertex_traversed = 0;
+    
+    if (!is_weighted_graph) {
+        matrix_size -= 1;
+        start_index += 1;
+        start_pos = 1;
+    }
+
+    //mark all vertices as unvisited
+    for (int i = 0; i < matrix_size; i++)
+        visited.push_back(false);
+
+    myqueue.push(start_index);
+    visited[start_index] = true;
+
+    while (!myqueue.empty()) {
+        int vertex = myqueue.front();
+        myqueue.pop();
+        
+        total_vertex_traversed += 1;
+        
+        // Loop through adj_matrix[vertex] to find neighbors
+        for (int i = start_pos; i < matrix_size; i++) {
+            int neighbor = i;
+            int edge = adj_matrix[vertex][i];
+            
+            if((edge >= 49) && (edge <= 57)) {
+                //enqueue neighbor if it hasn't been visited
+                if (!visited[neighbor]) {
+                    myqueue.push(neighbor);
+                    visited[neighbor] = true;
+                }
+            }
+        }
+    }
+
+    return total_vertex_traversed == GetTotalVertices();
+}
+
 bool Graph::IsGraphWeighted(string filename) {
     fstream file;
     file.open(filename);
@@ -58,9 +106,8 @@ int Graph::GetTotalEdges()
         for (int i = start_pos; i < adj_matrix.size(); i++) {
             int edge = adj_matrix[graph_row_pos][i];
             
-            if((edge >= 49) && (edge <= 57)) {
+            if((edge >= 49) && (edge <= 57))
                 edges_count += 1;
-            }
         }
         graph_row_pos -=1;
     }
